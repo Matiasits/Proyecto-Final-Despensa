@@ -19,4 +19,9 @@ urlpatterns = [
         views.ProveedorSearch.as_view(),
         name='Busqueda de Proveedores'
     ),
+    path(
+        'proveedores/detalles/',
+        views.ProveedorDetailView.as_view(),
+        name='Detalles de Proveedores'
+    ),
 ]

@@ -42,4 +42,10 @@ class ProveedorSearch(ListView):
         )
         
         return lista
+
+
+class ProveedorDetailView(DetailView):
+    model = Proveedor
+    template_name = "proveedor/detalles.html"
+    context_object_name = "detalle"
     

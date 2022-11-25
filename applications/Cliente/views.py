@@ -10,19 +10,22 @@ from django.views.generic import (
 )
 
 from .models import Cliente
+from .form import ClienteForm
+from django.urls import reverse_lazy
 
-class Inicio(TemplateView):
+
+class Inicio(TemplateView): #VISTA DE INICIO
     template_name = "cliente/inicio.html"
 
 
-class ClienteListView(ListView):
+class ClienteListView(ListView):    #LISTADO
     model = Cliente
-    template_name = "cliente/listado.html"
+    template_name = "cliente/listado.html"      #UBICACION Y NOMBRE DEL TEMPLATE 
     ordering = "dni"
     context_object_name = "clientes"
 
 
-class ClienteSearch(ListView):
+class ClienteSearch(ListView):  #BUSQUEDA SEGUN CRITERIo
     model = Cliente
     template_name = "cliente/busqueda.html"
     ordering = "dni"        #ordenamos segun el criterio que queramos
@@ -42,3 +45,42 @@ class ClienteSearch(ListView):
         )
         
         return lista
+
+class ClienteDetalles(DetailView):  #DETALLES
+    model = Cliente
+    template_name = "cliente/detalles.html"
+    context_object_name = "detalle"
+
+
+class ClienteCreateView(CreateView):    #CREACION
+    model = Cliente
+    template_name = "cliente/create.html"
+    form_class = ClienteForm
+    success_url = reverse_lazy('cliente_app:Lista de Clientes') #una vez agregado, vuelve hacia la pag que le pasemos
+    
+    
+    def form_valid(self, form):
+        
+        cl = form.save(commit=False)
+        cl.nombre_completo = f"{cl.nombre} {cl.apellido}"
+        cl.save()
+        return super(ClienteCreateView, self).form_valid(form)
+
+
+class ClienteUpdateView(UpdateView):    #ACTUALIZACION
+    model = Cliente
+    template_name = "cliente/update.html"
+    form_class = ClienteForm
+    success_url = reverse_lazy('cliente_app:Lista de Clientes')
+    
+    def form_valid(self, form):
+        cl = form.save(commit=False)
+        cl.nombre_completo = f"{cl.nombre} {cl.apellido}"
+        cl.save()
+        return super(ClienteUpdateView,self).form_valid(form)    
+    
+
+class ClienteDeleteView(DeleteView):
+    model = Cliente
+    template_name = "cliente/delete.html"
+    success_url = reverse_lazy('cliente_app:Lista de Clientes')
