@@ -9,8 +9,13 @@ urlpatterns = [
         name='Pagina cliente'
     ),
     path(
-        'clientes/',
+        'listado/',
         views.ClienteListView.as_view(),
         name='Lista de Clientes'
-    )
+    ),
+    path(
+        'busqueda/',
+        views.ClienteListView.as_view(),
+        name='Busqueda de Clientes'
+    ),
 ]

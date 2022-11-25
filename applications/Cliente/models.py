@@ -4,7 +4,7 @@ from django.db import models
 class Cliente(models.Model):
     """Model definition for Cliente."""
 
-    id = models.IntegerField(primary_key=True)
+    dni = models.IntegerField(primary_key=True)
     nombre = models.CharField("Nombre de cliente", max_length=50)
     apellido = models.CharField("Apellido de cliente", max_length=50)
 
@@ -16,4 +16,4 @@ class Cliente(models.Model):
 
     def __str__(self):
         """Unicode representation of Cliente."""
-        return {self.nombre}
+        return f"{self.dni}, {self.nombre}, {self.apellido}"
