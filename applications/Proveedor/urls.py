@@ -16,7 +16,7 @@ urlpatterns = [
         name='Busqueda de Proveedores'
     ),
     path(
-        'proveedores/detalles/',
+        'proveedores/detalles/<pk>/',
         views.ProveedorDetailView.as_view(),
         name='Detalles de Proveedores'
     ),
@@ -26,12 +26,12 @@ urlpatterns = [
         name='Creacion de Proveedores'
     ),
     path(
-        'proveedores/update/',
+        'proveedores/update/<pk>/',
         views.ProveedorUpdateView.as_view(),
         name='Modificar Proveedores'
     ),
     path(
-        'proveedores/delete/',
+        'proveedores/delete/<pk>/',
         views.ProveedorDeleteView.as_view(),
         name='Borrar Proveedores'
     ),
