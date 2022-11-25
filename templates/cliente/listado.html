@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Lista de Clientes</h1>
+
+<!-- For utilizado para listar los registros en cliente-->
+<ul>
+        
+    {% for cliente in clientes %}
+        <li>{{cliente.dni}}, {{cliente.apellido}}, {{cliente.nombre}}</li>
+    {% endfor %}
+
+</ul>
+{% endblock content %}
+    
+

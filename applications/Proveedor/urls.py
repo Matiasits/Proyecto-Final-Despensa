@@ -5,8 +5,18 @@ from . import views
 
 urlpatterns = [
     path(
-        'proveedor/',
-        views.Proveedor.as_view(),
+        'proveedores/inicio/',
+        views.Inicio.as_view(),
         name='Pagina proveedor'
-    )
+    ),
+    path(
+        'proveedores/listado/',
+        views.ProveedorListView.as_view(),
+        name='Lista de Proveedores'
+    ),
+    path(
+        'proveedores/busqueda/',
+        views.ProveedorSearch.as_view(),
+        name='Busqueda de Proveedores'
+    ),
 ]

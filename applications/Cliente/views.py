@@ -10,8 +10,9 @@ from django.views.generic import (
 )
 
 from .models import Cliente
-class Cliente(TemplateView):
-    template_name = "inicio.html"
+
+class Inicio(TemplateView):
+    template_name = "cliente/inicio.html"
 
 
 class ClienteListView(ListView):
@@ -21,15 +22,23 @@ class ClienteListView(ListView):
     context_object_name = "clientes"
 
 
-class ClienteListView(ListView):
+class ClienteSearch(ListView):
     model = Cliente
     template_name = "cliente/busqueda.html"
     ordering = "dni"        #ordenamos segun el criterio que queramos
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
 
-def get_queryset(self):
-    palabra_clave = self.request.GET.get('kword','')
-    lista = Cliente.objects.filter(
-        apellido__icontains = palabra_clave
-    )
-    return lista
+    def get_queryset(self):
+        #definimos variables donde obtendremos los request
+        lastname = self.request.GET.get('lastname','')
+        name = self.request.GET.get('name','')
+        dni = self.request.GET.get('dni','')
+        
+        #del model Cliente filtramos los atributos que necesitamos
+        lista = Cliente.objects.filter(
+            apellido__icontains = lastname,
+            nombre__icontains = name,
+            dni__icontains = dni
+        )
+        
+        return lista

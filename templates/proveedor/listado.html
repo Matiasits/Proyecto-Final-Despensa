@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Lista de Proveedores</h1>
+
+<!-- For utilizado para listar los registros en cliente-->
+<ul>
+        
+    {% for proveedor in proveedores %}
+        <li>{{proveedor.identificador}}, {{proveedor.nombre}}, {{proveedor.rubro}}</li>
+    {% endfor %}
+
+</ul>
+{% endblock content %}
