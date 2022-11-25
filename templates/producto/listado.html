@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Lista de Productos</h1>
+
+<!-- For utilizado para listar los registros en Producto-->
+<ul>
+        
+    {% for producto in productos %}
+        <li>{{producto.identificador}}, {{producto.nombre}}, {{producto.tipo}}, {{producto.marca}}</li>
+    {% endfor %}
+
+</ul>
+{% endblock content %}
+    

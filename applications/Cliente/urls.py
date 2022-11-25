@@ -6,11 +6,6 @@ app_name = 'cliente_app'
 
 urlpatterns = [
     path(
-        'clientes/inicio/',
-        views.Inicio.as_view(),
-        name='Pagina cliente',
-    ),
-    path(
         'clientes/listado/',
         views.ClienteListView.as_view(),
         name='Lista de Clientes',
@@ -29,7 +24,7 @@ urlpatterns = [
         'clientes/create/',
         views.ClienteCreateView.as_view(),
         name='Creacion de Cliente',
-    ),
+    ),  
     path(
         'clientes/update/<pk>/', #se detalla que registro segun su clave primaria desea actualizar
         views.ClienteUpdateView.as_view(),

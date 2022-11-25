@@ -14,10 +14,6 @@ from .form import ClienteForm
 from django.urls import reverse_lazy
 
 
-class Inicio(TemplateView): #VISTA DE INICIO
-    template_name = "cliente/inicio.html"
-
-
 class ClienteListView(ListView):    #LISTADO
     model = Cliente
     template_name = "cliente/listado.html"      #UBICACION Y NOMBRE DEL TEMPLATE 
@@ -36,7 +32,7 @@ class ClienteSearch(ListView):  #BUSQUEDA SEGUN CRITERIo
         lastname = self.request.GET.get('lastname','')
         name = self.request.GET.get('name','')
         dni = self.request.GET.get('dni','')
-        
+            
         #del model Cliente filtramos los atributos que necesitamos
         lista = Cliente.objects.filter(
             apellido__icontains = lastname,
@@ -59,13 +55,6 @@ class ClienteCreateView(CreateView):    #CREACION
     success_url = reverse_lazy('cliente_app:Lista de Clientes') #una vez agregado, vuelve hacia la pag que le pasemos
     
     
-    def form_valid(self, form):
-        
-        cl = form.save(commit=False)
-        cl.nombre_completo = f"{cl.nombre} {cl.apellido}"
-        cl.save()
-        return super(ClienteCreateView, self).form_valid(form)
-
 
 class ClienteUpdateView(UpdateView):    #ACTUALIZACION
     model = Cliente
@@ -73,12 +62,7 @@ class ClienteUpdateView(UpdateView):    #ACTUALIZACION
     form_class = ClienteForm
     success_url = reverse_lazy('cliente_app:Lista de Clientes')
     
-    def form_valid(self, form):
-        cl = form.save(commit=False)
-        cl.nombre_completo = f"{cl.nombre} {cl.apellido}"
-        cl.save()
-        return super(ClienteUpdateView,self).form_valid(form)    
-    
+
 
 class ClienteDeleteView(DeleteView):
     model = Cliente

@@ -10,9 +10,8 @@ from django.views.generic import (
 )
 
 from .models import Proveedor
-
-class Inicio(TemplateView):
-    template_name = "proveedor/inicio.html"
+from .form import ProveedorForm
+from django.urls import reverse_lazy
 
 
 class ProveedorListView(ListView):
@@ -48,4 +47,25 @@ class ProveedorDetailView(DetailView):
     model = Proveedor
     template_name = "proveedor/detalles.html"
     context_object_name = "detalle"
+
+
+class ProveedorCreateView(CreateView):
+    model = Proveedor
+    template_name = "proveedor/create.html"
+    form_class = ProveedorForm
+    success_url = reverse_lazy('proveedor_app:Lista de Proveedores') #una vez agregado, vuelve hacia la pag que le pasemos
+    
+
+class ProveedorUpdateView(UpdateView):
+    model = Proveedor
+    template_name = "proovedor/update.html"
+    form_class = ProveedorForm
+    success_url = reverse_lazy('proveedor_app:Lista de Proveedores') #una vez agregado, vuelve hacia la pag que le pasemos
+    
+
+class ProveedorDeleteView(DeleteView):
+    model = Proveedor
+    template_name = "proveedor/delete.html"
+    form_class = ProveedorForm
+    success_url = reverse_lazy('proveedor_app:Lista de Proveedores') #una vez agregado, vuelve hacia la pag que le pasemos
     

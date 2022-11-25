@@ -19,7 +19,8 @@ class Marca(models.Model):
 
 class Producto(models.Model):
     """Model definition for Producto."""
-    id = models.IntegerField(primary_key=True)
+    identificador = models.IntegerField(primary_key=True)
+    nombre = models.CharField('Nombre', max_length=50,default='')
     tipo = models.CharField("Tipo de producto", max_length=50)
     marcaProd = models.ForeignKey(Marca, on_delete=models.CASCADE)
 
