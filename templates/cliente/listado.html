@@ -2,16 +2,16 @@
 
 
 {% block content %}
-<h1>Lista de Clientes</h1>
+
+<button type="button" class="btn btn-danger">Light</button>
 
 <!-- For utilizado para listar los registros en cliente-->
-<ul>
-        
     {% for cliente in clientes %}
-        <li>{{cliente.dni}}, {{cliente.apellido}}, {{cliente.nombre}}</li>
+        <p>{{cliente.dni}}</p>
+        <p>{{cliente.apellido}}</p>
+        <p>{{cliente.nombre}}</p>
     {% endfor %}
 
-</ul>
 {% endblock content %}
     
 

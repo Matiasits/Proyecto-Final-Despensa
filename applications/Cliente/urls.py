@@ -35,4 +35,14 @@ urlpatterns = [
         views.ClienteDeleteView.as_view(),
         name='Borrar Cliente'
     ),
+    path(
+        'clientes/login/',
+        views.LoginUser.as_view(),
+        name='login-user'
+    ),
+    path(
+        'clientes/panel/',
+        views.Panel.as_view(),
+        name='panel-cliente'
+    ),
 ]
