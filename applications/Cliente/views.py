@@ -91,8 +91,16 @@ class ClienteCreateView(LoginRequiredMixin,CreateView):    #CREACION
     template_name = "cliente/create.html"
     form_class = ClienteForm
     login_url = reverse_lazy('cliente_app:login-cliente')
-    success_url = reverse_lazy('cliente_app:Lista de Clientes')
+    success_url = reverse_lazy('cliente_app:panel-cliente')
     
+
+    def form_valid(self, form):
+        cliente = form.save(commit=False)
+        cliente.nombre_completo = f"{cliente.nombre} {cliente.apellido}"
+        cliente.save()
+
+        return super(ClienteCreateView, self).form_valid(form)
+
     
     
 class ClienteUpdateView(LoginRequiredMixin,UpdateView):    #ACTUALIZACION
@@ -100,7 +108,14 @@ class ClienteUpdateView(LoginRequiredMixin,UpdateView):    #ACTUALIZACION
     template_name = "cliente/update.html"
     form_class = ClienteForm
     login_url = reverse_lazy('cliente_app:login-cliente')
-    success_url = reverse_lazy('cliente_app:Lista de Clientes')
+    success_url = reverse_lazy('cliente_app:panel-cliente')
+
+    def form_valid(self, form):
+        cliente = form.save(commit=False)
+        cliente.nombre_completo = f"{cliente.nombre} {cliente.apellido}"
+        cliente.save()
+
+        return super(ClienteUpdateView, self).form_valid(form)
 
 
 class ClienteDeleteView(LoginRequiredMixin,DeleteView):

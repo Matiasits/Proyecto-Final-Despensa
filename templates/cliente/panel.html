@@ -3,14 +3,15 @@
 
 {% block panel %}
 
-<h1>PANEL DE CLIENTES</h1>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<h1 class="text-center display-3 bg-primary">PANEL DE CLIENTES</h1>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
     <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="collapsibleNavbar"> 
+    <div class="collapse navbar-collapse flex-column" id="collapsibleNavbar"> 
         <!-- Links LISTADO CLIENTES-->
         <ul class="navbar-nav">
         
@@ -43,10 +44,6 @@
         </ul>
 
     </div>
-            <form method="GET" class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
-                <button class="btn btn-success" type="submit">Buscar</button>
-            </form>
 
 </nav>
 
@@ -72,14 +69,15 @@
                 <td>{{cliente.dni}}</td>
                 <td>
                     <div class="dropdown dropright">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Dropright button
+                    
+                    <button type="button" class="btn btn-outline-warning btn-sm dropdown-toggle" data-toggle="dropdown"> 
+                    Accion
                     </button>
-                
+                    
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
+                            <a class="dropdown-item" href="{% url 'cliente_app:Modificar Cliente' cliente.dni%}">Modificar</a>
+                            <a class="dropdown-item" href="{% url 'cliente_app:Borrar Cliente' cliente.dni%}">Borrar</a>
+                            <a class="dropdown-item" href="{% url 'cliente_app:Detalles de Clientes' cliente.dni%}">Detalles</a>
                         </div>
                     </div>
                 </td>
@@ -88,6 +86,7 @@
         {% endfor %}
         
   </table>
+    
 </div>
 
 {% endblock panel %}
