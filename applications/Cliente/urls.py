@@ -6,12 +6,7 @@ app_name = 'cliente_app'
 
 urlpatterns = [
     path(
-        'clientes/listado/',
-        views.ClienteListView.as_view(),
-        name='Lista de Clientes',
-    ),
-    path(
-        'clientes/busqueda/',
+        'clientes/buscar/',
         views.ClienteSearch.as_view(),
         name='Busqueda de Clientes',
     ),
@@ -38,11 +33,31 @@ urlpatterns = [
     path(
         'clientes/login/',
         views.LoginUser.as_view(),
-        name='login-user'
+        name='login-cliente'
     ),
     path(
         'clientes/panel/',
         views.Panel.as_view(),
         name='panel-cliente'
+    ),
+    path(
+        'clientes/logout/',
+        views.LogoutView.as_view(),
+        name='logout-cliente'
+    ),
+    path(
+        'clientes/ordenar/dni',
+        views.ClienteDni.as_view(),
+        name='cliente-dni'
+    ),
+    path(
+        'clientes/ordenar/nombre',
+        views.ClienteNombre.as_view(),
+        name='cliente-nombre'
+    ),
+    path(
+        'clientes/ordenar/apellido',
+        views.ClienteApellido.as_view(),
+        name='cliente-apellido'
     ),
 ]

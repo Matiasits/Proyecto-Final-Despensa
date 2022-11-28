@@ -23,9 +23,10 @@ from django.views.generic.edit import (
 class LoginUser(FormView):
     template_name = 'cliente/login.html'
     form_class = LoginForm
-    success_url = reverse_lazy('cliente_app:user-panel')
+    success_url = reverse_lazy('cliente_app:panel-cliente')
+    context_object_name = 'login'
     
-    def form_view(self, form):
+    def form_valid(self, form):
         user = authenticate(
             username = form.cleaned_data['username'],
             password = form.cleaned_data['password']
@@ -33,44 +34,45 @@ class LoginUser(FormView):
         login(self.request, user)
         return super(LoginUser, self).form_valid(form)
 
-class Panel(LoginRequiredMixin, TemplateView):
+
+class Panel(LoginRequiredMixin, ListView):
+    model = Cliente
     template_name = 'cliente/panel.html'
-    login_url = reverse_lazy('cliente_app:user-login')
+    context_object_name = 'clientes'
+    login_url = reverse_lazy('cliente_app:login-cliente')
+
     
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         return HttpResponseRedirect(
             reverse(
-                'cliente_app:user-login'
+                'cliente_app:login-cliente'
             )
         )
 
 
-############################ VIEWS ####################################
-class ClienteListView(ListView):    #LISTADO
-    model = Cliente
-    template_name = "cliente/listado.html"      #UBICACION Y NOMBRE DEL TEMPLATE 
-    ordering = "dni"
-    context_object_name = "clientes"
 
+############################ VIEWS ####################################
 
 class ClienteSearch(ListView):  #BUSQUEDA SEGUN CRITERIo
     model = Cliente
-    template_name = "cliente/busqueda.html"
-    ordering = "dni"        #ordenamos segun el criterio que queramos
+    template_name = "cliente/panel.html"
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
+    login_url = reverse_lazy('cliente_app:login-cliente')
+
 
     def get_queryset(self):
         #definimos variables donde obtendremos los request
+        
         lastname = self.request.GET.get('lastname','')
         name = self.request.GET.get('name','')
         dni = self.request.GET.get('dni','')
             
         #del model Cliente filtramos los atributos que necesitamos
         lista = Cliente.objects.filter(
-            apellido__icontains = lastname,
             nombre__icontains = name,
+            apellido__icontains = lastname,
             dni__icontains = dni
         )
         
@@ -81,24 +83,57 @@ class ClienteDetalles(DetailView):  #DETALLES
     model = Cliente
     template_name = "cliente/detalles.html"
     context_object_name = "detalle"
+    login_url = reverse_lazy('cliente_app:login-cliente')
 
 
-class ClienteCreateView(CreateView):    #CREACION
+class ClienteCreateView(LoginRequiredMixin,CreateView):    #CREACION
     model = Cliente
     template_name = "cliente/create.html"
     form_class = ClienteForm
-    success_url = reverse_lazy('cliente_app:Lista de Clientes') #una vez agregado, vuelve hacia la pag que le pasemos
+    login_url = reverse_lazy('cliente_app:login-cliente')
+    success_url = reverse_lazy('cliente_app:Lista de Clientes')
     
     
-class ClienteUpdateView(UpdateView):    #ACTUALIZACION
+    
+class ClienteUpdateView(LoginRequiredMixin,UpdateView):    #ACTUALIZACION
     model = Cliente
     template_name = "cliente/update.html"
     form_class = ClienteForm
+    login_url = reverse_lazy('cliente_app:login-cliente')
     success_url = reverse_lazy('cliente_app:Lista de Clientes')
-    
 
-class ClienteDeleteView(DeleteView):
+
+class ClienteDeleteView(LoginRequiredMixin,DeleteView):
     model = Cliente
     template_name = "cliente/delete.html"
+    login_url = reverse_lazy('cliente_app:login-cliente')
     success_url = reverse_lazy('cliente_app:Lista de Clientes')
+
+
+############################ VIEWS DE ORDEN ####################################
+
+class ClienteDni(LoginRequiredMixin,ListView):
+    model = Cliente
+    template_name = "cliente/panel.html"
+    ordering = 'dni'
+    context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
+    login_url = reverse_lazy('cliente_app:login-cliente')
+
+
+class ClienteNombre(LoginRequiredMixin,ListView):
+    model = Cliente
+    template_name = "cliente/panel.html"
+    ordering = 'nombre'
+    context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
+    login_url = reverse_lazy('cliente_app:login-cliente')
+
+
+class ClienteApellido(LoginRequiredMixin,ListView):
+    model = Cliente
+    template_name = "cliente/panel.html"
+    ordering = 'apellido'
+    context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
+    login_url = reverse_lazy('cliente_app:login-cliente')
+
+
 
