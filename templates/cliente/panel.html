@@ -13,17 +13,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar"> 
         <!-- Links LISTADO CLIENTES-->
         <ul class="navbar-nav">
-          
-            <li class="nav-item">
-                <a class="nav-link" href="#">MODIFICAR</a>
-            </li>
         
             <li class="nav-item">
-                <a class="nav-link" href="#">CREAR</a>
+                <a class="nav-link" href="{% url 'cliente_app:Creacion de Cliente'%}">INICIO</a>
             </li>
-        
+
             <li class="nav-item">
-                <a class="nav-link" href="#">BORRAR</a>
+                <a class="nav-link" href="{% url 'cliente_app:Creacion de Cliente'%}">CREAR</a>
             </li>
 
             <!-- Dropdown DE ACCIONES -->
@@ -47,9 +43,8 @@
         </ul>
 
     </div>
-      
             <form method="GET" class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" id="{{ cliente.dni }}">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
                 <button class="btn btn-success" type="submit">Buscar</button>
             </form>
 
@@ -62,24 +57,32 @@
     <table class="table table-dark table-hover table-wrapper-scroll-y">
         <thead>
             <tr>
-                <th>Seleccionar</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>DNI</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
     
         {% for cliente in clientes %}
         <tbody>
             <tr>
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.apellido}}</td>
+                <td>{{cliente.dni}}</td>
                 <td>
-                    <div class="custom-control custom-checkbox">
-                        <input method="GET" type="checkbox" name="checkbox" value="{{ cliente.dni }}">
+                    <div class="dropdown dropright">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Dropright button
+                    </button>
+                
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
                     </div>
-                </td>                
-                <td id="dato" name="dato">{{cliente.nombre}}</td>
-                <td id="dato" name="dato">{{cliente.apellido}}</td>
-                <td id="dato" name="dato">{{cliente.dni}}</td>
+                </td>
             </tr>
         </tbody>
         {% endfor %}

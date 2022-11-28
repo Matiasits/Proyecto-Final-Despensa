@@ -107,8 +107,7 @@ class ClienteDeleteView(LoginRequiredMixin,DeleteView):
     model = Cliente
     template_name = "cliente/delete.html"
     login_url = reverse_lazy('cliente_app:login-cliente')
-    success_url = reverse_lazy('cliente_app:Lista de Clientes')
-
+    success_url = reverse_lazy('cliente_app:panel-cliente')
 
 ############################ VIEWS DE ORDEN ####################################
 
@@ -134,6 +133,4 @@ class ClienteApellido(LoginRequiredMixin,ListView):
     ordering = 'apellido'
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('cliente_app:login-cliente')
-
-
 
