@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate
 
 class ClienteForm(forms.ModelForm):
     """Form definition for Cliente."""
-
     class Meta:
         """Meta definition for Clienteform."""
         model = Cliente
@@ -13,8 +12,8 @@ class ClienteForm(forms.ModelForm):
                 'nombre',
                 'apellido',
                 'dni',
-                  )
-        
+                 )
+
 ############################ LOGIN ####################################
 class LoginForm(forms.Form):
     username = forms.CharField(

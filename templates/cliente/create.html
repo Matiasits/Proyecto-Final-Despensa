@@ -2,11 +2,27 @@
 
 
 {% block content %}
-    <h1>Alta de Clientes</h1>
+<h1 class="text-center display-4 ">Alta de Clientes</h1>
 
-    <form method="POST">{% csrf_token %}    <!-- Permite prevenir falsificaciónes de solicitudes entre sitios.-->
-        {{form.as_p}}
-        <input type="submit" value="Alta">
-    </form>
-{% endblock content %}
+<form method="POST">{% csrf_token %}    <!-- Permite prevenir falsificaciónes de solicitudes entre sitios.-->
+    <div class="alert alert-info">
+        <div clas="row m-7 justify-content-center align-items-center">
+            <strong>Informacion:</strong> 
+            <br>
+            Procure completar todos los campos para tener una informacion completa de cada cliente
+        </div>
+    </div>
     
+    <div class="row mt-5 justify-content-center align-items-center">
+        <table>
+            {{form.as_table}}
+        </table>
+    </div>
+
+    <div class="row m-0 justify-content-center mt-4">
+        <button class="btn btn-outline-warning text-dark" type="submit">Dar de alta</button>
+    </div>
+
+</form>
+
+{% endblock content %}
