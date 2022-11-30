@@ -79,11 +79,12 @@ class ClienteSearch(ListView):  #BUSQUEDA SEGUN CRITERIo
         return lista
 
 
-class ClienteDetalles(DetailView):  #DETALLES
+class ClienteDetalles(LoginRequiredMixin,DetailView):  #DETALLES
     model = Cliente
     template_name = "cliente/detalles.html"
     context_object_name = "detalle"
     login_url = reverse_lazy('cliente_app:login-cliente')
+
 
 
 class ClienteCreateView(LoginRequiredMixin,CreateView):    #CREACION
