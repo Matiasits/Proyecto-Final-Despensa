@@ -6,11 +6,6 @@ app_name = 'cliente_app'
 
 urlpatterns = [
     path(
-        'clientes/buscar/',
-        views.ClienteSearch.as_view(),
-        name='Busqueda de Clientes',
-    ),
-    path(
         'clientes/detalles/<pk>/', #se detalla que registro segun su clave primaria desea detallar
         views.ClienteDetalles.as_view(),
         name='Detalles de Clientes',

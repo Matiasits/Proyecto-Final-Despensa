@@ -40,7 +40,17 @@ class Panel(LoginRequiredMixin, ListView):
     template_name = 'cliente/panel.html'
     context_object_name = 'clientes'
     login_url = reverse_lazy('cliente_app:login-cliente')
-
+    
+    def get_queryset(self):
+        #definimos variables donde obtendremos los request
+        
+        dato = self.request.GET.get('dato','')
+        #del model Cliente filtramos los atributos que necesitamos
+        lista = Cliente.objects.filter(            
+                dni__icontains = dato,
+                )
+        
+        return lista
     
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
@@ -54,29 +64,6 @@ class LogoutView(View):
 
 
 ############################ VIEWS ####################################
-
-class ClienteSearch(ListView):  #BUSQUEDA SEGUN CRITERIo
-    model = Cliente
-    template_name = "cliente/panel.html"
-    context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
-    login_url = reverse_lazy('cliente_app:login-cliente')
-
-
-    def get_queryset(self):
-        #definimos variables donde obtendremos los request
-        
-        dato = self.request.GET.get('dato','')
-        
-            
-        #del model Cliente filtramos los atributos que necesitamos
-        lista = Cliente.objects.filter(
-            nombre__icontains = dato,
-            apellido__icontains = dato,
-            dni__icontains = dato
-        )
-        
-        return lista
-
 
 class ClienteDetalles(LoginRequiredMixin,DetailView):  #DETALLES
     model = Cliente
