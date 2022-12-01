@@ -3,16 +3,29 @@
 
 {% block content %}
 <h1 class="text-center display-4">Borrar Clientes</h1>
-<div class="row m-0 justify-content-center">
-    <div class="card mt-5">
-        <img class="card-img-top" src="{% static 'images/user.png' %}" alt="Card image" style="width:100%">
-        <div class="card-body">
-            
-            <h3>¿Desea borrar este cliente?</h3>
-            <form method="POST">{% csrf_token %}    <!-- Permite prevenir falsificaciónes de solicitudes entre sitios.-->
-                <input class="btn btn-primary" type="submit" value="Borrar">
-            </form>
 
+<div class="alert alert-warning">
+    <div clas="row m-7 justify-content-center align-items-center">
+        <strong>¡Advertencia!</strong> 
+        <br>
+        Usted esta a punto de borrar un cliente.
+    </div>
+</div>
+
+<h3 class="text-center display-6">¿Desea borrar este cliente?</h3>
+
+<div class="row mt-3 justify-content-center">
+    <div class="card" style="width: 400px;">
+        <img class="card-img-top" src="{% static 'images/user.png' %}" alt="Card image">
+
+        <div class="card-body">            
+            <form method="POST">{% csrf_token %}    <!-- Permite prevenir falsificaciónes de solicitudes entre sitios.-->
+                <p>Nombre: {{delete_detail.nombre}}</p>
+                <p>Apellido: {{delete_detail.apellido}}</p>
+                <p>DNI: {{delete_detail.dni}}</p>
+                <input class="btn btn-primary row col-10 ml-4" type="submit" value="Borrar">
+            </form>
+            
         </div>
     </div>
 </div>

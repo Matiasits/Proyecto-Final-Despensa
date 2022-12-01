@@ -4,16 +4,17 @@
 {% block content %}
 <h3 class="text-center display-4">DETALLES DE CLIENTE</h3>
 
-<div class="row m-0 justify-content-center">
+<div class="row mt-3 justify-content-center">
     
-    <div class="card mt-5">
-        <img class="card-img-top" src="{% static 'images/user.png' %}" alt="Card image" style="width:100%">
+    <div class="card mt-5" style="width: 400px;">
+        <img class="card-img-top" src="{% static 'images/user.png' %}" alt="Card image">
         
         <div class="card-body">
-            <h4 class="card-title">{{detalle.nombre}} {{detalle.apellido}}</h4>
+            <p class="card-text">Nombre: {{detalle.nombre}}</p> 
+            <p class="card-text">Apellido: {{detalle.apellido}}</p>
             <p class="card-text">DNI: {{detalle.dni}}</p>
 
-            <a href="{% url 'cliente_app:panel-cliente'%}" class="btn btn-primary">Volver</a>
+            <a href="{% url 'cliente_app:panel-cliente'%}" class="btn btn-primary row col-10 ml-4 ">Volver</a>
         </div>
     </div>
 </div>

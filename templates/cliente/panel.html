@@ -42,6 +42,11 @@
             </li>
 
         </ul>
+        
+        <form method="GET" class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Buscar" id="dato" name="dato">
+            <button class="btn btn-success" type="submit">Buscar</button>
+        </form>
 
     </div>
 
@@ -61,8 +66,11 @@
             </tr>
         </thead>
     
-        {% for cliente in clientes %}
+
         <tbody>
+            
+            {% for cliente in clientes  %}
+
             <tr>
                 <td>{{cliente.nombre}}</td>
                 <td>{{cliente.apellido}}</td>
@@ -82,8 +90,11 @@
                     </div>
                 </td>
             </tr>
+            
+            {% endfor %}
+        
         </tbody>
-        {% endfor %}
+        
         
   </table>
     

@@ -65,15 +65,14 @@ class ClienteSearch(ListView):  #BUSQUEDA SEGUN CRITERIo
     def get_queryset(self):
         #definimos variables donde obtendremos los request
         
-        lastname = self.request.GET.get('lastname','')
-        name = self.request.GET.get('name','')
-        dni = self.request.GET.get('dni','')
+        dato = self.request.GET.get('dato','')
+        
             
         #del model Cliente filtramos los atributos que necesitamos
         lista = Cliente.objects.filter(
-            nombre__icontains = name,
-            apellido__icontains = lastname,
-            dni__icontains = dni
+            nombre__icontains = dato,
+            apellido__icontains = dato,
+            dni__icontains = dato
         )
         
         return lista
@@ -119,9 +118,10 @@ class ClienteUpdateView(LoginRequiredMixin,UpdateView):    #ACTUALIZACION
         return super(ClienteUpdateView, self).form_valid(form)
 
 
-class ClienteDeleteView(LoginRequiredMixin,DeleteView):
+class ClienteDeleteView(LoginRequiredMixin,DeleteView,DetailView):
     model = Cliente
     template_name = "cliente/delete.html"
+    context_object_name = "delete_detail"
     login_url = reverse_lazy('cliente_app:login-cliente')
     success_url = reverse_lazy('cliente_app:panel-cliente')
 
