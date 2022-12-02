@@ -55,4 +55,10 @@ urlpatterns = [
         views.ClienteApellido.as_view(),
         name='cliente-apellido'
     ),
+    
+    path(
+        'clientes/api',
+        views.ClienteListApiView.as_view(),
+        name='api-cliente'
+    ),
 ]

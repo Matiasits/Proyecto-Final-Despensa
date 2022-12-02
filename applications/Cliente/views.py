@@ -5,6 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Cliente
 from .form import LoginForm, ClienteForm
+from rest_framework.generics import ListAPIView
+from .serializer import ClienteSerializer
 from django.views.generic import (
     View,
     ListView,
@@ -138,3 +140,14 @@ class ClienteApellido(LoginRequiredMixin,ListView):
     paginate_by = 5
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('cliente_app:login-cliente')
+    
+
+############################ API VIEW ####################################
+
+
+class ClienteListApiView(ListAPIView):
+
+    serializer_class = ClienteSerializer
+
+    def get_queryset(self):
+        return Cliente.objects.all()
