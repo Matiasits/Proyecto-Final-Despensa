@@ -39,6 +39,7 @@ class Panel(LoginRequiredMixin, ListView):
     model = Cliente
     template_name = 'cliente/panel.html'
     context_object_name = 'clientes'
+    paginate_by = 5
     login_url = reverse_lazy('cliente_app:login-cliente')
     
     def get_queryset(self):
@@ -116,6 +117,7 @@ class ClienteDni(LoginRequiredMixin,ListView):
     model = Cliente
     template_name = "cliente/panel.html"
     ordering = 'dni'
+    paginate_by = 5
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('cliente_app:login-cliente')
 
@@ -124,6 +126,7 @@ class ClienteNombre(LoginRequiredMixin,ListView):
     model = Cliente
     template_name = "cliente/panel.html"
     ordering = 'nombre'
+    paginate_by = 5
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('cliente_app:login-cliente')
 
@@ -132,12 +135,6 @@ class ClienteApellido(LoginRequiredMixin,ListView):
     model = Cliente
     template_name = "cliente/panel.html"
     ordering = 'apellido'
+    paginate_by = 5
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('cliente_app:login-cliente')
-
-
-
-class Base(TemplateView):
-    template_name = "base.html"
-    context_object_name = ""
-

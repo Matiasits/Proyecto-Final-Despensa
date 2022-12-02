@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include #re_path se utiliza para redefinir un path
- 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
    path('admin/', admin.site.urls),
-   re_path('', include('applications.Proveedor.urls')),
+   re_path('', include('applications.Proveedor.urls')),#se dirige al archivo urls.py de tal aplicacion 
    re_path('', include('applications.Cliente.urls')),
-   re_path('', include('applications.Producto.urls'))#se dirige al archivo urls.py de la aplicacion empleado  
-]
+   re_path('', include('applications.Producto.urls'))
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

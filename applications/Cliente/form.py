@@ -12,6 +12,7 @@ class ClienteForm(forms.ModelForm):
                 'nombre',
                 'apellido',
                 'dni',
+                'avatar',
                  )
 
 ############################ LOGIN ####################################
