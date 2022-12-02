@@ -4,11 +4,19 @@
 {% block content %}
 <h3 class="text-center display-4 font-weight-bold font-italic">DETALLES DE CLIENTE</h3>
 
+
+
+
 <div class="row mt-3 justify-content-center">
     
     <div class="card mt-5" style="width: 400px;">
-        <img class="card-img-top" src="{% static 'images/user.png' %}" alt="Card image">
-        
+        {% if detalle.avatar %}
+            <img class="card-img-top" src="{{ detalle.avatar.url }}" alt="">
+        {% else %}
+            <img class="card-img-top" src="{% static 'images/user.png' %}" alt="">
+        {% endif %}
+            
+
         <div class="card-body">
             <p class="card-text">Nombre: {{detalle.nombre}}</p> 
             <p class="card-text">Apellido: {{detalle.apellido}}</p>

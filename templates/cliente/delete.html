@@ -23,7 +23,8 @@
                 <p>Nombre: {{delete_detail.nombre}}</p>
                 <p>Apellido: {{delete_detail.apellido}}</p>
                 <p>DNI: {{delete_detail.dni}}</p>
-                <button class="btn btn-danger row col-10 ml-4" type="submit" value="Borrar"><i class="fa-solid fa-user-minus"></i></button>
+                <button class="btn btn-danger row col-10 ml-4" type="submit" value="Borrar" data-toggle="tooltip" data-placement="right" title="Borrar"><i class="fa-solid fa-user-minus"></i></button>
+                <a href="{% url 'cliente_app:panel-cliente'%}" class="fa-solid fa-rotate-left btn btn-primary row col-10 ml-4 mt-3" data-toggle="tooltip" data-placement="right" title="Volver"></a>
             </form>
             
         </div>

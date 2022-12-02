@@ -47,7 +47,7 @@ class Panel(LoginRequiredMixin, ListView):
         
         dato = self.request.GET.get('dato','')
         #del model Cliente filtramos los atributos que necesitamos
-        lista = Cliente.objects.filter(dni__icontains = dato).values() | Cliente.objects.filter(nombre__icontains = dato).values() | Cliente.objects.filter(apellido__icontains = dato).values()
+        lista = Cliente.objects.filter(dni__icontains = dato) | Cliente.objects.filter(nombre__icontains = dato) | Cliente.objects.filter(apellido__icontains = dato)
         
         return lista
     
