@@ -26,7 +26,7 @@ urlpatterns = [
         name='Borrar Cliente'
     ),
     path(
-        'clientes/login/',
+        'login/',
         views.LoginUser.as_view(),
         name='login-cliente'
     ),

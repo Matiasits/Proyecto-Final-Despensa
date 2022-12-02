@@ -21,7 +21,7 @@ from django.views.generic.edit import (
 
 ############################ LOGIN ####################################
 class LoginUser(FormView):
-    template_name = 'cliente/login.html'
+    template_name = 'login.html'
     form_class = LoginForm
     success_url = reverse_lazy('cliente_app:panel-cliente')
     context_object_name = 'login'
@@ -46,9 +46,7 @@ class Panel(LoginRequiredMixin, ListView):
         
         dato = self.request.GET.get('dato','')
         #del model Cliente filtramos los atributos que necesitamos
-        lista = Cliente.objects.filter(            
-                dni__icontains = dato,
-                )
+        lista = Cliente.objects.filter(dni__icontains = dato).values() | Cliente.objects.filter(nombre__icontains = dato).values() | Cliente.objects.filter(apellido__icontains = dato).values()
         
         return lista
     
@@ -136,4 +134,10 @@ class ClienteApellido(LoginRequiredMixin,ListView):
     ordering = 'apellido'
     context_object_name = "clientes"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('cliente_app:login-cliente')
+
+
+
+class Base(TemplateView):
+    template_name = "base.html"
+    context_object_name = ""
 

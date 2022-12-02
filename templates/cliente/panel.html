@@ -3,7 +3,7 @@
 
 {% block panel %}
 
-<h1 class="text-center display-4 ">PANEL DE CLIENTES</h1>
+<h1 class="text-center display-4 font-weight-bold font-italic">PANEL DE CLIENTES</h1>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center sticky-top">
     <!-- Toggler/collapsibe Button -->
@@ -25,7 +25,7 @@
 
             <!-- Dropdown DE ACCIONES -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" data-toggle="tooltip" data-placement="right" title="Refrescar luego de ordenar">
                     ORDENAR
                 </a>
 
@@ -37,18 +37,18 @@
 
             </li>
 
-                  <a class="navbar-brand" href="{% url 'cliente_app:panel-cliente'%}">
-                    <img src="{% static 'images/refresh.png'%}" alt="refresh" style="width: 300px;"
-                  </a>
-                  <p class="navbar-text">Refrescar luego de ordenar</p>
+                <a class="navbar-brand" href="{% url 'cliente_app:panel-cliente'%}">
+                    <i class="fa-solid fa-rotate ml-3" data-toggle="tooltip" data-placement="right" title="Refrescar"></i>
+                </a>
+<!--                  <p class="navbar-text">Refrescar luego de ordenar</p>     -->
         </ul>
 
      
         <form method="GET" class="form-inline mx-5 ">
-            <input class="form-control" type="text" placeholder="Buscar por DNI" id="dato" name="dato">
-            <button class="btn btn-success" type="submit">Buscar</button>
+            <input class="form-control" type="text" placeholder="Buscar" id="dato" name="dato">
+            <button class="btn btn-lg btn-success fa-solid fa-magnifying-glass" type="submit" data-toggle="tooltip" data-placement="right" title="Buscar"></button>
         </form>        
-           <a class="btn btn-danger" type="submit" href="{% url 'cliente_app:logout-cliente'%}">Salir</a>
+           <a class="fa-solid fa-circle-xmark btn btn-danger btn-lg" type="submit" href="{% url 'cliente_app:logout-cliente'%}"  data-toggle="tooltip" data-placement="right" title="Salir"></a>
 
 
     </div>
