@@ -50,22 +50,3 @@ class LoginForm(forms.Form):
             raise forms.ValidationError("Los datos ingresados son incorrectos")
 
         return self.cleaned_data
-        
-"""
-class ClienteForm(forms.ModelForm):
-    
-    class meta:
-        
-        model = Cliente
-        fields = '__all__'
-    
-
-        model = Cliente
-        fields = ('apellido',
-                  'nombre',
-                  'dni',
-                  )
-        widgets = {
-            #'campo' : forms.CheckboxSelectMultiplePlace() #sirve para seleccionar varios valores 
-        }
-"""

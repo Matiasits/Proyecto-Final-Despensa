@@ -22,7 +22,7 @@ class Producto(models.Model):
     identificador = models.IntegerField(primary_key=True)
     nombre = models.CharField('Nombre', max_length=50,default='')
     tipo = models.CharField("Tipo de producto", max_length=50)
-    marcaProd = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    marcaProd = models.ManyToManyField(Marca)
 
     class Meta:
         """Meta definition for Producto."""

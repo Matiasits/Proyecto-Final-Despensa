@@ -6,33 +6,64 @@ app_name = 'producto_app'
 
 urlpatterns = [
     path(
-        'productos/listado/',
-        views.ProductoListView.as_view(),
-        name='Lista de Productos',
-    ),
-    path(
-        'productos/busqueda/',
-        views.ProductoSearch.as_view(),
-        name='Busqueda de Productos',
-    ),
-    path(
-        'productos/detalles/<pk>/', #se detalla que registro segun su clave primaria desea detallar
+        'producto/detalles/<pk>/', #se detalla que registro segun su clave primaria desea detallar
         views.ProductoDetalles.as_view(),
-        name='Detalles de Productos',
+        name='Detalles de producto',
     ),
     path(
-        'productos/create/',
+        'producto/create/',
         views.ProductoCreateView.as_view(),
-        name='Creacion de Productos',
+        name='Creacion de producto',
     ),  
     path(
-        'productos/update/<pk>/', #se detalla que registro segun su clave primaria desea actualizar
+        'producto/update/<pk>/', #se detalla que registro segun su clave primaria desea actualizar
         views.ProductoUpdateView.as_view(),
-        name='Modificar Productos'
+        name='Modificar producto'
     ),
     path(
-        'productos/delete/<pk>/',
+        'producto/delete/<pk>/',
         views.ProductoDeleteView.as_view(),
-        name='Borrar Productos'
+        name='Borrar producto'
+    ),
+    path(
+        'login/',
+        views.LoginUser.as_view(),
+        name='login-producto'
+    ),
+    path(
+        'producto/panel/',
+        views.Panel.as_view(),
+        name='panel-producto'
+    ),
+    path(
+        'producto/logout/',
+        views.LogoutView.as_view(),
+        name='logout-producto'
+    ),
+    path(
+        'producto/ordenar/identificador',
+        views.ProductoIdentificador.as_view(),
+        name='producto-identificador'
+    ),
+    path(
+        'producto/ordenar/nombre',
+        views.ProductoNombre.as_view(),
+        name='producto-nombre'
+    ),
+    path(
+        'producto/ordenar/tipo',
+        views.ProductoTipo.as_view(),
+        name='producto-tipo'
+    ),
+    path(
+        'producto/ordenar/marcaProd',
+        views.ProductoMarca.as_view(),
+        name='producto-marca'
+    ),
+    
+    path(
+        'producto/api',
+        views.ProductoListApiView.as_view(),
+        name='api-producto'
     ),
 ]
