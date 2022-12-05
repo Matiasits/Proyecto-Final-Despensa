@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -10,7 +11,7 @@
         {% if detalle.avatar %}
             <img class="card-img-top" src="{{ detalle.avatar.url }}" alt="">
         {% else %}
-            <img class="card-img-top" src="{% static 'images/prod.jpg' %}" alt="">
+            <img class="card-img-top" src="{% static 'images/prod.png' %}" alt="">
         {% endif %}
             
 
@@ -18,9 +19,16 @@
             <p class="card-text">Identificador: {{detalle.identificador}}</p> 
             <p class="card-text">Nombre: {{detalle.nombre}}</p>
             <p class="card-text">Tipo: {{detalle.tipo}}</p>
-            <p class="card-text">Marca de producto: {{detalle.marcaProd}}</p>
+            
+            {% for item in detalle.marca.all %}
+            <p class="card-text"> Marca de producto: {{item.marca}}</p>
+            {% endfor %}
 
-            <a href="{% url 'cliente_app:panel-cliente'%}" class="fa-solid fa-rotate-left btn btn-primary row col-10 ml-4 "></a>
+            <p class="card-text">Cantidad: {{detalle.cantidad}}</p>
+            <p class="card-text">Cantidad: {{detalle.proveedor}}</p>
+
+            
+            <a href="{% url 'producto_app:panel-producto'%}" class="fa-solid fa-rotate-left btn btn-primary row col-10 ml-4 "></a>
         </div>
     </div>
 </div>

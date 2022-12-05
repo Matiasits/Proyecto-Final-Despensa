@@ -2,13 +2,14 @@
 
 
 {% block content %}
-    <h1 class="text-center display-4 font-weight-bold font-italic">Alta de Productos</h1>
+    <h1 class="text-center display-4 font-weight-bold font-italic">Agregar Producto</h1>
 
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}    <!-- Permite prevenir falsificaciónes de solicitudes entre sitios.-->
     <div class="alert alert-info">
         <div clas="row m-7 justify-content-center align-items-center">
             <strong>Informacion:</strong> 
             <br>
-            Procure completar todos los campos para tener una informacion completa de cada cliente
+            Procure completar todos los campos para tener una informacion completa de cada producto
         </div>
     </div>
     

@@ -1,6 +1,7 @@
 #Formulario para crear
 from django import forms
 from.models import Producto
+from django.contrib.auth import authenticate
 
 class ProductoForm(forms.ModelForm):
     """Form definition for Cliente."""
@@ -9,14 +10,19 @@ class ProductoForm(forms.ModelForm):
         """Meta definition for Clienteform."""
 
         model = Producto
-        fields = ('identificador',
-                  'nombre',
-                  'tipo',
-                  'marcaProd',
-                  )
+        fields = (
+            'identificador',
+            'nombre',
+            'tipo',
+            'marca',
+            'cantidad',
+            'proveedor',
+        )
+    
         widgets = {
-            'marcaProd' : forms.CheckboxSelectMultiple() #sirve para seleccionar varios valores 
+            'marca' : forms.Select()
         }
+
 ############################ LOGIN ####################################
 class LoginForm(forms.Form):
     username = forms.CharField(

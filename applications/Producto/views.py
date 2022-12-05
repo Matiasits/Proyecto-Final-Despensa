@@ -39,7 +39,7 @@ class LoginUser(FormView):
 class Panel(LoginRequiredMixin, ListView):
     model = Producto
     template_name = 'producto/panel.html'
-    context_object_name = 'producto'
+    context_object_name = 'productos'
     paginate_by = 5
     login_url = reverse_lazy('producto_app:login-producto')
 
@@ -66,7 +66,7 @@ class LogoutView(View):
 class ProductoDetalles(LoginRequiredMixin,DetailView):    
     model = Producto
     template_name = "producto/detalles.html"      
-    context_object_name = "productos"
+    context_object_name = "detalle"
     login_url = reverse_lazy('producto_app:login-producto')
 
 
@@ -74,14 +74,14 @@ class ProductoCreateView(CreateView):    #CREACION LoginRequery
     model = Producto
     template_name = "producto/create.html"
     form_class = ProductoForm
-    success_url = reverse_lazy('producto_app:Lista de Productos') #una vez agregado, vuelve hacia la pag que le pasemos
+    success_url = reverse_lazy('producto_app:panel-producto') #una vez agregado, vuelve hacia la pag que le pasemos
     login_url = reverse_lazy('producto_app:login-producto')
 
 
 class ProductoUpdateView(LoginRequiredMixin,UpdateView):  #BUSQUEDA SEGUN CRITERIO
     model = Producto
-    template_name = "producto/update.html"
-    context_object_name = "productos"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
+    template_name = 'producto/update.html'
+    context_object_name = 'productos'    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     success_url = reverse_lazy('producto_app:panel-producto')
     login_url = reverse_lazy('producto_app:login-producto')
 

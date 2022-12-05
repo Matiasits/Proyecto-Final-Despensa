@@ -61,10 +61,11 @@
     <table class="table table-dark table-hover table-wrapper-scroll-y">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Nombre</th>
                 <th>Marca</th>
                 <th>Tipo</th>
-                <th>Id</th>
+                <th>Cantidad</th>
                 <th>ACCIONES</th>
             </tr>
         </thead>
@@ -75,8 +76,16 @@
             {% for producto in productos %}
 
             <tr>
+                <td>{{producto.identificador}}</td>
                 <td>{{producto.nombre}}</td>
-                <td>
+
+                {% for item in producto.marca.all %}
+                    <td>{{item.marca}}</td>
+                {% endfor %}
+                    
+                <td>{{producto.tipo}}</td>
+                <td>{{producto.cantidad}}</td>
+                <td>   
                     <div class="dropdown dropright">
                     
                     <button type="button" class="btn btn-outline-warning btn-sm dropdown-toggle" data-toggle="dropdown"> 
@@ -84,9 +93,9 @@
                     </button>
                     
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{% url 'producto_app:Modificar producto' producto.dni%}">Modificar</a>
-                            <a class="dropdown-item" href="{% url 'producto_app:Detalles de producto' producto.dni%}">Detalles</a>
-                            <a class="dropdown-item" href="{% url 'producto_app:Borrar producto' producto.dni%}">Borrar</a>
+                            <a class="dropdown-item" href="{% url 'producto_app:Modificar producto' producto.identificador%}">Modificar</a>
+                            <a class="dropdown-item" href="{% url 'producto_app:Detalles de producto' producto.identificador%}">Detalles</a>
+                            <a class="dropdown-item" href="{% url 'producto_app:Borrar producto' producto.identificador%}">Borrar</a>
                         </div>
                     </div>
                 </td>
