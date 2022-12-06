@@ -37,12 +37,12 @@ class LoginUser(FormView):
         return super(LoginUser, self).form_valid(form)
 
 
-class Panel(LoginRequiredMixin, ListView):
+class Panel(ListView):
     model = Cliente
     template_name = 'cliente/panel.html'
     context_object_name = 'clientes'
     paginate_by = 5
-    login_url = reverse_lazy('cliente_app:login-cliente')
+
     
     def get_queryset(self):
         #definimos variables donde obtendremos los request

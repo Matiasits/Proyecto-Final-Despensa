@@ -20,10 +20,10 @@
 
             <div class="card-body">            
                 <form method="POST">{% csrf_token %}    <!-- Permite prevenir falsificaciónes de solicitudes entre sitios.-->
-                    <p>Identificador: {{detalle.identificador}}</p> 
-                    <p>Nombre: {{detalle.nombre}}</p>
-                    <p>Tipo: {{detalle.tipo}}</p>
-                    {%q for item in detalle.marca.all %}
+                    <p class="card-text">Identificador: {{delete_detail.identificador}}</p> 
+                    <p>Nombre: {{delete_detail.nombre}}</p>
+                    <p>Tipo: {{delete_detail.tipo}}</p>
+                    {% for item in delete_detail.marca.all %}
                     <p> Marca de producto: {{item.marca}}</p>
                     {% endfor %}
                     <button class="btn btn-danger row col-10 ml-4" type="submit" value="Borrar" data-toggle="tooltip" data-placement="right" title="Borrar"><i class="fa-solid fa-user-minus"></i></button>

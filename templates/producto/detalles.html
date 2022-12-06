@@ -25,7 +25,7 @@
             {% endfor %}
 
             <p class="card-text">Cantidad: {{detalle.cantidad}}</p>
-            <p class="card-text">Cantidad: {{detalle.proveedor}}</p>
+            <p class="card-text">Proveedor: {{detalle.proveedor.nombre}}</p>
 
             
             <a href="{% url 'producto_app:panel-producto'%}" class="fa-solid fa-rotate-left btn btn-primary row col-10 ml-4 "></a>

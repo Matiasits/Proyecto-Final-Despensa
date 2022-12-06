@@ -36,12 +36,11 @@ class LoginUser(FormView):
         return super(LoginUser, self).form_valid(form)
 
 
-class Panel(LoginRequiredMixin, ListView):
+class Panel(ListView):
     model = Producto
     template_name = 'producto/panel.html'
     context_object_name = 'productos'
     paginate_by = 5
-    login_url = reverse_lazy('producto_app:login-producto')
 
     def get_queryset(self):
         #definimos variables donde obtendremos los request
@@ -70,7 +69,7 @@ class ProductoDetalles(LoginRequiredMixin,DetailView):
     login_url = reverse_lazy('producto_app:login-producto')
 
 
-class ProductoCreateView(CreateView):    #CREACION LoginRequery
+class ProductoCreateView(LoginRequiredMixin,CreateView):    #CREACION LoginRequery
     model = Producto
     template_name = "producto/create.html"
     form_class = ProductoForm
@@ -81,6 +80,7 @@ class ProductoCreateView(CreateView):    #CREACION LoginRequery
 class ProductoUpdateView(LoginRequiredMixin,UpdateView):  #BUSQUEDA SEGUN CRITERIO
     model = Producto
     template_name = 'producto/update.html'
+    form_class = ProductoForm
     context_object_name = 'productos'    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     success_url = reverse_lazy('producto_app:panel-producto')
     login_url = reverse_lazy('producto_app:login-producto')
