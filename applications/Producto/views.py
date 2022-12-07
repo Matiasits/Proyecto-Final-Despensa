@@ -47,8 +47,11 @@ class Panel(ListView):
 
         dato = self.request.GET.get('dato','')
         #del model Producto filtramos los atributos que necesitamos
-        lista = Producto.objects.filter(identificador__icontains = dato) | Producto.objects.filter(nombre__icontains = dato) | Producto.objects.filter(tipo__icontains = dato)
-        
+        lista = (
+            Producto.objects.filter(identificador__icontains = dato) 
+            | Producto.objects.filter(nombre__icontains = dato) 
+            | Producto.objects.filter(tipo__icontains = dato) 
+        )
         return lista
 class LogoutView(View):
     def get(self, request, *args, **kwargs):

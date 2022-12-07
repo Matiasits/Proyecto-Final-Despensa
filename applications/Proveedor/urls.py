@@ -6,33 +6,59 @@ app_name = 'proveedor_app'
 
 urlpatterns = [
     path(
-        'proveedores/listado/',
-        views.ProveedorListView.as_view(),
-        name='Lista de Proveedores'
+        'proveedor/detalles/<pk>/',
+        views.ProveedorDetalles.as_view(),
+        name='Detalles de Proveedor'
     ),
     path(
-        'proveedores/busqueda/',
-        views.ProveedorSearch.as_view(),
-        name='Busqueda de Proveedores'
-    ),
-    path(
-        'proveedores/detalles/<pk>/',
-        views.ProveedorDetailView.as_view(),
-        name='Detalles de Proveedores'
-    ),
-    path(
-        'proveedores/create/',
+        'proveedor/create/',
         views.ProveedorCreateView.as_view(),
-        name='Creacion de Proveedores'
+        name='Creacion de Proveedor'
     ),
     path(
-        'proveedores/update/<pk>/',
+        'proveedor/update/<pk>/',
         views.ProveedorUpdateView.as_view(),
-        name='Modificar Proveedores'
+        name='Modificar Proveedor'
     ),
     path(
-        'proveedores/delete/<pk>/',
+        'proveedor/delete/<pk>/',
         views.ProveedorDeleteView.as_view(),
-        name='Borrar Proveedores'
+        name='Borrar Proveedor'
+    ),
+    path(
+        'login/',
+        views.LoginUser.as_view(),
+        name='login-proveedor'
+    ),
+    path(
+        'proveedor/panel/',
+        views.Panel.as_view(),
+        name='panel-proveedor'
+    ),
+    path(
+        'proveedor/logout/',
+        views.LogoutView.as_view(),
+        name='logout-proveedor'
+    ),
+    path(
+        'proveedor/ordenar/identificador',
+        views.ProveedorIdentificador.as_view(),
+        name='proveedor-identificador'
+    ),
+    path(
+        'proveedor/ordenar/nombre',
+        views.ProveedorNombre.as_view(),
+        name='proveedor-nombre'
+    ),
+    path(
+        'proveedor/ordenar/rubro',
+        views.PRoveedorRubro.as_view(),
+        name='proveedor-rubro'
+    ),
+    
+    path(
+        'proveedor/api',
+        views.ProveedorListApiView.as_view(),
+        name='api-proveedor'
     ),
 ]
