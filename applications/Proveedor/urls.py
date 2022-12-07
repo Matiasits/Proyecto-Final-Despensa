@@ -8,22 +8,22 @@ urlpatterns = [
     path(
         'proveedor/detalles/<pk>/',
         views.ProveedorDetalles.as_view(),
-        name='Detalles de Proveedor'
+        name='Detalles de proveedor'
     ),
     path(
         'proveedor/create/',
         views.ProveedorCreateView.as_view(),
-        name='Creacion de Proveedor'
+        name='Creacion de proveedor'
     ),
     path(
         'proveedor/update/<pk>/',
         views.ProveedorUpdateView.as_view(),
-        name='Modificar Proveedor'
+        name='Modificar proveedor'
     ),
     path(
         'proveedor/delete/<pk>/',
         views.ProveedorDeleteView.as_view(),
-        name='Borrar Proveedor'
+        name='Borrar proveedor'
     ),
     path(
         'login/',

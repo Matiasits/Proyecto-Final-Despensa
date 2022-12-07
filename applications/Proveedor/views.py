@@ -77,24 +77,24 @@ class ProveedorCreateView(LoginRequiredMixin,CreateView):
     model = Proveedor
     template_name = "proveedor/create.html"
     form_class = ProveedorForm
-    success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
     login_url = reverse_lazy('proveedor_app:login-proveedor')
+    success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
 
 
 class ProveedorUpdateView(LoginRequiredMixin,UpdateView):
     model = Proveedor
     template_name = "proovedor/update.html"
     form_class = ProveedorForm
-    success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
     login_url = reverse_lazy('proveedor_app:login-proveedor')
+    success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
 
 
 class ProveedorDeleteView(LoginRequiredMixin,DeleteView,DetailView):
     model = Proveedor
     template_name = "proveedor/delete.html"
     context_object_name = 'delete_detail'
-    success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
     login_url = reverse_lazy('proveedor_app:login-proveedor')
+    success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
 
 ############################ VIEWS DE ORDEN ####################################
 
