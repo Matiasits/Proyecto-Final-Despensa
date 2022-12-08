@@ -14,7 +14,7 @@ urlpatterns = [
         'clientes/create/',
         views.ClienteCreateView.as_view(),
         name='Creacion de Cliente',
-    ),  
+    ),
     path(
         'clientes/update/<pk>/', #se detalla que registro segun su clave primaria desea actualizar
         views.ClienteUpdateView.as_view(),

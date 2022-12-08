@@ -22,5 +22,5 @@ urlpatterns = [
    path('admin/', admin.site.urls),
    re_path('', include('applications.Proveedor.urls')),#se dirige al archivo urls.py de tal aplicacion 
    re_path('', include('applications.Cliente.urls')),
-   re_path('', include('applications.Producto.urls'))
+   re_path('', include('applications.Producto.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

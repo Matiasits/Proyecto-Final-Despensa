@@ -129,7 +129,7 @@ class ProveedorRubro(LoginRequiredMixin,ListView):
 ############################ HOME VIEW ####################################
 
 class Home(TemplateView):
-    template_name = "base.html"
+    template_name = "home.html"
     
 ############################ API VIEW ####################################
 class ProveedorListApiView(ListAPIView):

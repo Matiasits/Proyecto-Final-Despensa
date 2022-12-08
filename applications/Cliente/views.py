@@ -142,8 +142,14 @@ class ClienteApellido(LoginRequiredMixin,ListView):
     login_url = reverse_lazy('cliente_app:login-cliente')
     
 
-############################ API VIEW ####################################
 
+############################ HOME VIEW ####################################
+
+class Home(TemplateView):
+    template_name = "home.html"
+    
+    
+############################ API VIEW ####################################
 
 class ClienteListApiView(ListAPIView):
 

@@ -6,11 +6,6 @@ app_name = 'proveedor_app'
 
 urlpatterns = [
     path(
-        'inicio/',
-        views.Home.as_view(),
-        name='inicio'
-    ),
-    path(
         'proveedor/detalles/<pk>/',
         views.ProveedorDetalles.as_view(),
         name='Detalles de proveedor'
@@ -60,7 +55,11 @@ urlpatterns = [
         views.ProveedorRubro.as_view(),
         name='proveedor-rubro'
     ),
-    
+    path(
+        'inicio/',
+        views.Home.as_view(),
+        name='inicio'
+    ),
     path(
         'proveedor/api',
         views.ProveedorListApiView.as_view(),
