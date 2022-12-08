@@ -56,11 +56,6 @@ urlpatterns = [
         name='proveedor-rubro'
     ),
     path(
-        'inicio/',
-        views.Home.as_view(),
-        name='inicio'
-    ),
-    path(
         'proveedor/api',
         views.ProveedorListApiView.as_view(),
         name='api-proveedor'

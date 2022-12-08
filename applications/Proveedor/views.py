@@ -125,12 +125,6 @@ class ProveedorRubro(LoginRequiredMixin,ListView):
     context_object_name = "proveedor"    #los objetos que las vistas mandan al template para ver clioentes tienen nombres por defecto, con esto le asignamos un nombre
     login_url = reverse_lazy('proveedor_app:login-proveedor')
     
-
-############################ HOME VIEW ####################################
-
-class Home(TemplateView):
-    template_name = "home.html"
-    
 ############################ API VIEW ####################################
 class ProveedorListApiView(ListAPIView):
 
