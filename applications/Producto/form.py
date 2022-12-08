@@ -20,7 +20,7 @@ class ProductoForm(forms.ModelForm):
         )
     
         widgets = {
-            'marca' : forms.Select()
+            'marca' : forms.SelectMultiple()
         }
 
 ############################ LOGIN ####################################

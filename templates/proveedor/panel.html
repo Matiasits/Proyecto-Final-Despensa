@@ -72,16 +72,13 @@
 
         <tbody>
             
-            {% for proveedor in proveedores %}
+            {% for proveedor in proveedor %}
 
             <tr>
                 <td>{{proveedor.identificador}}</td>
-                <td>{{proveedor.nombre}}</td>
-
-                {% for item in proveedor.marca.all %}
-                    <td>{{item.marca}}</td>
-                {% endfor %}                    
-                <td>   
+                <td>{{proveedor.nombre}}</td>                 
+                <td>{{proveedor.rubro}}</td>
+                <td>
                     <div class="dropdown dropright">
                     
                     <button type="button" class="btn btn-outline-warning btn-sm dropdown-toggle" data-toggle="dropdown"> 
