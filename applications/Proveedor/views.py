@@ -117,7 +117,7 @@ class ProveedorNombre(LoginRequiredMixin,ListView):
     login_url = reverse_lazy('proveedor_app:login-proveedor')
 
 
-class PRoveedorRubro(LoginRequiredMixin,ListView):
+class ProveedorRubro(LoginRequiredMixin,ListView):
     model = Proveedor
     template_name = "proveedor/panel.html"
     ordering = 'rubro'
@@ -126,6 +126,11 @@ class PRoveedorRubro(LoginRequiredMixin,ListView):
     login_url = reverse_lazy('proveedor_app:login-proveedor')
     
 
+############################ HOME VIEW ####################################
+
+class Home(TemplateView):
+    template_name = "base.html"
+    
 ############################ API VIEW ####################################
 class ProveedorListApiView(ListAPIView):
 

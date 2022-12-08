@@ -6,6 +6,11 @@ app_name = 'proveedor_app'
 
 urlpatterns = [
     path(
+        'inicio/',
+        views.Home.as_view(),
+        name='inicio'
+    ),
+    path(
         'proveedor/detalles/<pk>/',
         views.ProveedorDetalles.as_view(),
         name='Detalles de proveedor'
@@ -52,7 +57,7 @@ urlpatterns = [
     ),
     path(
         'proveedor/ordenar/rubro',
-        views.PRoveedorRubro.as_view(),
+        views.ProveedorRubro.as_view(),
         name='proveedor-rubro'
     ),
     
