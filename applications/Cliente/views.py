@@ -65,7 +65,6 @@ class LogoutView(View):
 
 
 ############################ VIEWS ####################################
-
 class ClienteDetalles(LoginRequiredMixin,DetailView):  #DETALLES
     model = Cliente
     template_name = "cliente/detalles.html"
