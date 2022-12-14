@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block panel %}
-<h1 class="text-center display-4 font-weight-bold font-italic bg-dark">PANEL DE CLIENTES</h1>
+<h1 class="text-center display-4 font-weight-bold font-italic bg-dark text-light">PANEL DE CLIENTES</h1>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center sticky-top">
     <!-- Toggler/collapsibe Button -->
@@ -73,7 +73,7 @@
 
         <tbody>
             
-            {% for cliente in clientes  %}
+            {% for cliente in clientes %}
 
             <tr>
                 <td>{{cliente.dni}}</td>
@@ -94,7 +94,7 @@
                     </div>
                 </td>
             </tr>
-            
+        
             {% endfor %}
         
         </tbody>

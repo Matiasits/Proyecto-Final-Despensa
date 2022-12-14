@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import Producto
 from .form import LoginForm, ProductoForm
+from django.views.generic.edit import FormView
 from rest_framework.generics import ListAPIView
 from .serializer import ProductoSerializer
 from django.views.generic import (
@@ -15,9 +16,6 @@ from django.views.generic import (
     TemplateView,
     UpdateView,
     DetailView
-)
-from django.views.generic.edit import (
-    FormView
 )
 
 ############################ LOGIN ####################################
@@ -41,10 +39,9 @@ class Panel(ListView):
     template_name = 'producto/panel.html'
     context_object_name = 'productos'
     paginate_by = 5
-
+    
     def get_queryset(self):
         #definimos variables donde obtendremos los request
-
         dato = self.request.GET.get('dato','')
         #del model Producto filtramos los atributos que necesitamos
         lista = (
@@ -53,6 +50,7 @@ class Panel(ListView):
             | Producto.objects.filter(tipo__icontains = dato) 
         )
         return lista
+    
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)

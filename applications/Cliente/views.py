@@ -46,11 +46,9 @@ class Panel(ListView):
     
     def get_queryset(self):
         #definimos variables donde obtendremos los request
-        
         dato = self.request.GET.get('dato','')
         #del model Cliente filtramos los atributos que necesitamos
         lista = Cliente.objects.filter(dni__icontains = dato) | Cliente.objects.filter(nombre__icontains = dato) | Cliente.objects.filter(apellido__icontains = dato)
-        
         return lista
     
 class LogoutView(View):
@@ -61,7 +59,6 @@ class LogoutView(View):
                 'cliente_app:login-cliente'
             )
         )
-
 
 
 ############################ VIEWS ####################################
@@ -87,7 +84,6 @@ class ClienteCreateView(LoginRequiredMixin,CreateView):    #CREACION
         cliente.save()
 
         return super(ClienteCreateView, self).form_valid(form)
-
     
     
 class ClienteUpdateView(LoginRequiredMixin,UpdateView):    #ACTUALIZACION

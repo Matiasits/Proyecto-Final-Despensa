@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block panel %}
-<h1 class="text-center display-4 font-weight-bold font-italic bg-dark">PANEL DE PRODUCTOS</h1>
+<h1 class="text-center display-4 font-weight-bold font-italic bg-dark text-light">PANEL DE PRODUCTOS</h1>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center sticky-top">
     <!-- Toggler/collapsibe Button -->
@@ -75,7 +75,7 @@
 
         <tbody>
             
-            {% for producto in productos %}
+            {% for producto in productos  %}
 
             <tr>
                 <td>{{producto.identificador}}</td>
