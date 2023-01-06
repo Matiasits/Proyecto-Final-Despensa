@@ -83,7 +83,7 @@ class ProveedorCreateView(LoginRequiredMixin,CreateView):
 
 class ProveedorUpdateView(LoginRequiredMixin,UpdateView):
     model = Proveedor
-    template_name = "proovedor/update.html"
+    template_name = "proveedor/update.html"
     form_class = ProveedorForm
     login_url = reverse_lazy('proveedor_app:login-proveedor')
     success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
@@ -96,8 +96,8 @@ class ProveedorDeleteView(LoginRequiredMixin,DeleteView,DetailView):
     login_url = reverse_lazy('proveedor_app:login-proveedor')
     success_url = reverse_lazy('proveedor_app:panel-proveedor') #una vez agregado, vuelve hacia la pag que le pasemos
 
-############################ VIEWS DE ORDEN ####################################
 
+############################ VIEWS DE ORDEN ####################################
 
 class ProveedorIdentificador(LoginRequiredMixin,ListView):
     model = Proveedor

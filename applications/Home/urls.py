@@ -10,4 +10,9 @@ urlpatterns = [
                     views.Home.as_view(),
                     name='inicio'
                 ),    
+                path(
+                    'apiPrueba/',
+                    views.Api.as_view(),
+                    name='api'
+                ),    
 ]

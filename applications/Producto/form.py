@@ -1,6 +1,6 @@
 #Formulario para crear
 from django import forms
-from.models import Producto
+from.models import Producto, Marca
 from django.contrib.auth import authenticate
 
 class ProductoForm(forms.ModelForm):
@@ -18,11 +18,12 @@ class ProductoForm(forms.ModelForm):
             'cantidad',
             'proveedor',
         )
-    
-        widgets = {
-            'marca' : forms.SelectMultiple()
-        }
 
+        widgets = {
+            'marca' : forms.SelectMultiple(),
+            
+        }
+        
 ############################ LOGIN ####################################
 class LoginForm(forms.Form):
     username = forms.CharField(
