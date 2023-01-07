@@ -18,6 +18,8 @@ from django.views.generic import (
     DetailView
 )
 
+from .services import get_nbaTeams
+
 ############################ LOGIN ####################################
 class LoginUser(FormView):
     template_name = 'login.html'
@@ -141,3 +143,13 @@ class ProductoListApiView(ListAPIView):
 
     def get_queryset(self):
         return Producto.objects.all()
+    
+class GetTeams(TemplateView):
+    template_name = 'nbaTeams.html'
+    
+    def get_context_data(self, **kwargs):
+        context = {
+            'nbaTeams' : get_nbaTeams()
+        }
+        return context
+    

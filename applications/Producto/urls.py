@@ -66,4 +66,9 @@ urlpatterns = [
         views.ProductoListApiView.as_view(),
         name='api-producto'
     ),
+    path(
+        'nba/',
+        views.GetTeams.as_view(),
+        name='nba'
+    ),
 ]
