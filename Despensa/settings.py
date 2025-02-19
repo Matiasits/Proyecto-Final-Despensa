@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'Despensa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'despensa',
-        'USER': 'patricia',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
+        'NAME': 'despensa_08g5',
+        'USER': 'despensa_08g5_user',
+        'PASSWORD': 'BHMd0TxMZ8XAbkmiralXEBRxqfcsCoCg',
+        'HOST': 'dpg-cur478qj1k6c73d00vag-a',  # Copia el hostname de Render
         'PORT': '5432',
     }
 }
