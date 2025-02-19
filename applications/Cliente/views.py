@@ -70,12 +70,12 @@ class ClienteDetalles(LoginRequiredMixin,DetailView):  #DETALLES
 
 
 
-class ClienteCreateView(LoginRequiredMixin,CreateView):    #CREACION
+class ClienteCreateView(CreateView):    #CREACION
     model = Cliente
     template_name = "cliente/create.html"
     form_class = ClienteForm
-    login_url = reverse_lazy('cliente_app:login-cliente')
-    success_url = reverse_lazy('cliente_app:panel-cliente')
+    # login_url = reverse_lazy('cliente_app:login-cliente')
+    # success_url = reverse_lazy('cliente_app:panel-cliente')
     
 
     def form_valid(self, form):
